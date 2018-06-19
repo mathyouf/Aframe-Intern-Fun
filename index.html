@@ -10,7 +10,7 @@
   <body>
     <a-scene>
       
-        <a-plane geometry="height: 1000; width: 1000" color="blue"></a-plane>
+        <a-plane geometry="height: 1000; width: 1000" color="green" rotation="-90 0 0"></a-plane>
         
         <a-assets>
             <img id="door-texture" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_texture.jpg?1529366905845">
@@ -96,13 +96,27 @@
                 </a-entity>
                 
                 <a-animation attribute="rotation" to="0 -360 0" repeat="indefinite" easing="linear" dur="10000"></a-animation>
+              
                 
         </a-entity>
+      
+      <a-entity id="flower">
+      
+        <a-cylinder></a-cylinder>
+        <a-sphere>
+          <a-circle></a-circle>
+          <a-circle></a-circle>
+          <a-circle></a-circle>
+          <a-circle
+        </a-sphere>
+        
+        
+      </a-entity>
                 
       
         
         
-        <a-sky></a-sky>
+        <a-sky color="blue"></a-sky>
     </a-scene>
     
     <script>
