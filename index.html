@@ -1,27 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <title>Hello!</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Off-Day Work</title>
+    <meta name="description" content="Hello, WebVR! - A-Frame">
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+      
     
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
-    
-    <!-- import the webpage's javascript file -->
-    <script src="/script.js" defer></script>
-  </head>  
+  </head>
   <body>
-    <h1>Hi there!</h1>
-    
-    <p>
-      I'm your cool new webpage. Made with <a href="https://glitch.com">Glitch</a>!
-    </p>
+    <a-scene>
+        
+        <a-assets>
+            <img id="door-texture" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_texture.jpg?1529366905845">
+            <img id="doorknob-texture" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoorknob_texture.jpg?1529366909977">
+            <audio id="door-open" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_2.mp3?1529366898989"></audio>
+            
+        </a-assets>
+        
+        <a-camera>
+            <a-cursor>
+            </a-cursor>
+        </a-camera>
+        
+            <a-entity>
+                <a-box position="-1 1.5 -3" rotation="0 90 0" color="#b89e6d" 
+                       geometry="height: 3; depth: 0.25; width: 0.25" shadow></a-box>
+                <a-box position="1.5 1.5 -3" rotation="0 90 0" color="#b89e6d"
+                       geometry="height: 3; depth: .25; width: .25" shadow></a-box>
+                <a-box position="0.25 3.125 -3" rotation="90 0 90" color="#b89e6d"
+                       geometry="height: 2.75; depth: 0.25; width: 0.25" shadow></a-box>
 
-    <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
-    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
-    <script src="https://button.glitch.me/button.js"></script>
+                <a-entity door position="-1 0 -3">
+
+                    <a-box src="#door-texture" position="1.25 1.5 .25" geometry="height: 3; depth: 0.25; width: 2.25">
+                        <a-sphere src="#doorknob-texture" position=".736 0 .185" geometry="primitive: sphere; radius: 0.1"></a-sphere>
+                    </a-box>
+
+                    <a-animation begin="click" attribute="rotation" to="0 90 0" dur="1670" easing="ease-in-out-circ"></a-animation>
+
+                </a-entity>
+                
+            </a-entity>
+            
+            
+
+
+             <a-entity rotation="0 90 -60" position="-5 6 0">
+
+                 <a-box color="#000000" position="0 -2.5 0" geometry="height: 5; depth: 0.1; width: 0.1">
+                     <a-sphere src="assets/doorknob_texture.jpg" position="0 -3 0" radius=".5"></a-sphere>
+                 </a-box>
+                 <a-animation attribute="rotation" repeat="indefinite" to="0 90 60" easing="ease-in-out-quad"
+                             direction="alternate-reverse" dur="1000"></a-animation>
+
+            </a-entity>
+                
+            <a-entity>
+
+                <a-entity position=".5 1.5 9">
+
+                    <a-sphere position="-1.286 .5 0" radius=".5">
+
+                        <a-cone rotation="0 0 90" position="-.931" color="yellow" 
+                                geometry="primitive: cone; radiusBottom: 0.1"></a-cone>
+                        
+                        <a-sphere geometry="primitive: sphere; radius: 0.1" position="-.3 .2 .3" color="black"></a-sphere>
+                        <a-sphere geometry="primitive: sphere; radius: 0.1" position="-.3 .2 -.3" color="black"></a-sphere>
+            
+
+                    </a-sphere>
+                    <a-sphere position="0 0 0" color="blue" radius="1">
+
+                        <a-entity position="0 .25 1">
+                            <a-plane position="0 .6 .5" rotation="45 0 0" 
+                                     geometry="primitive: plane; height: 2; width: 1" color="red" material.side="THREE.DoubleSide"></a-plane>
+                            <a-animation attibute="rotation" repeat="indefinite" to="-90 0 0" easing="ease-in-out-circ"
+                                         direction="alternate-reverse" dur="1000"></a-animation>
+                        </a-entity>
+
+                        <a-entity position="0 0.25 -1">
+                            <a-plane position="0 .2 -.5" rotation="135 0 0"
+                                     geometry="primitive: plane; height: 2; width: 1" color="red" material.side="THREE.DoubleSide"></a-plane>
+                            <a-animation attibute="rotation" repeat="indefinite" to="-90 0 0" easing="ease-in-out-circ"
+                                         direction="alternate-reverse" dur="1000"></a-animation>
+                        </a-entity>
+
+                    </a-sphere>
+                    
+                    <a-animation attribute="position" from=".5 1.5 9" to=".5 6 9" easing="linear" direction="alternate-reverse"
+                               repeat="indefinite" dur="5000"></a-animation>
+                    <a-animation attribute="rotation" to="360 0 0" repeat="indefinite" easing="ease-in-out-quad" dur="2000"></a-animation>
+
+                </a-entity>
+                
+                <a-animation attribute="rotation" to="0 -360 0" repeat="indefinite" easing="linear" dur="10000"></a-animation>
+                
+        </a-entity>
+                
+      
+        
+        
+        <a-sky></a-sky>
+    </a-scene>
+    
+    <script>
+        AFRAME.registerComponent('door', {
+            init:function() {
+            let playing = false;
+            let audio = document.getElementById("door-open");
+            this.el.addEventListener('click', () => {
+                if(!playing) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+                playing = !playing;
+            });
+            }
+        });
+      /*
+      AFRAME.registerComponent('two-sided', {
+        init: function () {
+          this.material.side = THREE.DoubleSide;
+        }
+      });*/
+        
+        
+      
+      </script>
+      
   </body>
 </html>

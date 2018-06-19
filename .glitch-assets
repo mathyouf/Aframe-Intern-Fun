@@ -4,3 +4,6 @@
 {"uuid":"adSBq97hhhpFNUna","deleted":true}
 {"uuid":"adSBq97hhhpFNUnb","deleted":true}
 {"uuid":"adSBq97hhhpFNUnc","deleted":true}
+{"name":"door_2.mp3","date":"2018-06-19T00:08:18.989Z","url":"https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_2.mp3","type":"audio/mp3","size":27264,"thumbnail":"https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fthumbnails%2Fdoor_2.mp3","thumbnailWidth":210,"thumbnailHeight":210,"dominantColor":"rgba(178, 255, 214, 0.60)","uuid":"yxKOPEtuuOkigGhn"}
+{"name":"door_texture.jpg","date":"2018-06-19T00:08:25.845Z","url":"https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_texture.jpg","type":"image/jpeg","size":58512,"imageWidth":680,"imageHeight":460,"thumbnail":"https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fthumbnails%2Fdoor_texture.jpg","thumbnailWidth":330,"thumbnailHeight":224,"dominantColor":"rgb(42,26,16)","uuid":"Xyl24n4jyOIwJ1Xb"}
+{"name":"doorknob_texture.jpg","date":"2018-06-19T00:08:29.977Z","url":"https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoorknob_texture.jpg","type":"image/jpeg","size":5630,"imageWidth":275,"imageHeight":183,"thumbnail":"https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoorknob_texture.jpg","thumbnailWidth":275,"thumbnailHeight":183,"dominantColor":"rgb(84,84,84)","uuid":"AXfVlEJWkkDYLjDP"}
