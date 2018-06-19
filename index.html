@@ -74,17 +74,19 @@
                     <a-sphere position="0 0 0" color="red" radius="1">
 
                         <a-entity position="0 .25 1">
-                            <a-plane position="0 .6 .5" rotation="45 0 0" 
-                                     geometry="primitive: plane; height: 2; width: 1" color="red" material.side="THREE.DoubleSide"></a-plane>
-                            <a-animation attibute="rotation" repeat="indefinite" to="-90 0 0" easing="ease-in-out-circ"
+                          
+                           <a-box position="0 0.6 0.5" rotation="45 0 0" geometry="depth:0.1;height:2" color="yellow" ></a-box>
+                          <a-animation attibute="rotation" repeat="indefinite" to="-90 0 0" easing="ease-in-out-circ"
                                          direction="alternate-reverse" dur="1000"></a-animation>
+                            
                         </a-entity>
 
                         <a-entity position="0 0.25 -1">
-                            <a-plane position="0 .2 -.5" rotation="135 0 0"
-                                     geometry="primitive: plane; height: 2; width: 1" color="red" material.side="THREE.DoubleSide"></a-plane>
-                            <a-animation attibute="rotation" repeat="indefinite" to="-90 0 0" easing="ease-in-out-circ"
+                          
+                            <a-box position="0 0.6 0.5" rotation="45 0 0" geometry="depth:0.1;height:2" color="yellow" ></a-box>
+                          <a-animation attibute="rotation" repeat="indefinite" to="-90 0 0" easing="ease-in-out-circ"
                                          direction="alternate-reverse" dur="1000"></a-animation>
+                          
                         </a-entity>
 
                     </a-sphere>
@@ -100,14 +102,17 @@
                 
         </a-entity>
       
-      <a-entity position="3 0 3" id="flower">
+      <a-entity position="3 0 3" rotation="0 33 0" id="flower">
       
         <a-cylinder material="" geometry="radius:0.1;height:2" position="0 1 0"></a-cylinder>        
         <a-sphere position="0 2 0" material="" geometry="radius:0.3"> 
+          
+          <a-animation attribute="rotation" to="0 0 360" easing="linear" dur="3000" repeat="indefinite"></a-animation>
           <a-sphere position="0.5 0 -0.4" rotation="0 35 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>
           <a-sphere position="0 0.5 -0.4" rotation="-35 0 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>
           <a-sphere position="-0.5 0 -0.4" rotation="0  -35 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>
-          <a-sphere position="0 -0.5 -0.4" rotation="0  35 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>        
+          <a-sphere position="0 -0.5 -0.4" rotation="35 0 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>
+        
         </a-sphere>
 
         
