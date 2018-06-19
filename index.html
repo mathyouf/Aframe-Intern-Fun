@@ -102,13 +102,14 @@
       
       <a-entity position="3 0 3" id="flower">
       
-        <a-cylinder></a-cylinder>
-        <a-sphere>
-          <a-circle></a-circle>
-          <a-circle></a-circle>
-          <a-circle></a-circle>
-          <a-circle
+        <a-cylinder material="" geometry="radius:0.1;height:2" position="0 1 0"></a-cylinder>        
+        <a-sphere position="0 2 0" material="" geometry="radius:0.3"> 
+          <a-sphere position="0.5 0 -0.4" rotation="0 35 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>
+          <a-sphere position="0 0.5 -0.4" rotation="-35 0 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>
+          <a-sphere position="-0.5 0 -0.4" rotation="0  -35 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>
+          <a-sphere position="0 -0.5 -0.4" rotation="0  35 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>        
         </a-sphere>
+
         
         
       </a-entity>
