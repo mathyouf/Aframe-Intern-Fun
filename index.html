@@ -141,29 +141,33 @@
     AFRAME.registerComponent('clouds', {
       schema: {
         color: {type: 'color'},
-        number: { default: 3, min: 0},
+        number: { default: 3, min: 0 },
+        bubbles: { default: 5, min: 0 },
+        cloudHeight: { default: 100 },
       },
       init: function () {
-        var cloudnumber = this.data.number;
-        var bubblenumber
-        var base = document.createElement('a-sphere');
-        base.setAttribute('material', 'color: white');
-        base.setAttribute('radius', 1);  
-        base.setAttribute('scale', getRandNum(1, 15) + ' ' + getRandNum(1, 15) + ' '+ getRandNum(1, 15));
-      
-        for (var i = 0; i < 5; ++i) {
-          origin = document.createElement('a-entity');
-          origin.setAttribute('rotation', getRandNum(0, 360) + ' ' + getRandNum(0, 360) + ' ' + getRandNum(0, 360));
-          var temp = document.createElement('a-sphere');
-          var tempradius = getRandNum(.3, 1);
-          temp.setAttribute('radius', tempradius);
-          temp.setAttribute('material', 'color: white');
-          temp.setAttribute('position', '' + getRandNum(1.2 - tempradius, 1) + ' 0 0');
-          origin.appendChild(temp);
-          base.appendChild(origin);
+        var cloudNumber = this.data.number;
+        var bubbleNumber = this.data.bubbles;
+        var cloudheight = this.data.cloudHeight;
+        for (var i = 0; i < cloudNumber; ++i) { 
+          var base = document.createElement('a-sphere');
+          base.setAttribute('material', 'color: white');
+          base.setAttribute('radius', 1);  
+          base.setAttribute('scale', getRandNum(1, 15) + ' ' + getRandNum(1, 15) + ' '+ getRandNum(1, 15));
+          base.setAttribute('position', getRandNum(1, cloudheight*2) + ' ' + getRandNum(0, cloudheight) + ' '+ getRandNum(1, cloudheight*2));
+          for (var j = 0; j < bubbleNumber; ++j) {
+            origin = document.createElement('a-entity');
+            origin.setAttribute('rotation', getRandNum(0, 360) + ' ' + getRandNum(0, 360) + ' ' + getRandNum(0, 360));
+            var temp = document.createElement('a-sphere');
+            var tempradius = getRandNum(.3, 1);
+            temp.setAttribute('radius', tempradius);
+            temp.setAttribute('material', 'color: white');
+            temp.setAttribute('position', '' + getRandNum(1.2 - tempradius, 1) + ' 0 0');
+            origin.appendChild(temp);
+            base.appendChild(origin);
+          }  
+          this.el.appendChild(base);
         }
-                             
-        this.el.appendChild(base);
       }
     });
     </script>
