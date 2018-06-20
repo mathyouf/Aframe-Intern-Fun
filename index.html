@@ -24,10 +24,12 @@
           <a-cursor position="0 0 -0.7" scale=".7 .7 .7"></a-cursor></a-camera>
       <!--Sky-->
       <a-entity id="skycenter" rotation="0 0 0">
-        <a-animation attribute="rotation" from="0 0 0" to="180 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createNight" ></a-animation>
-        <a-animation attribute="rotation" from="180 0 0" to="0 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createDay" ></a-animation>
-        <a-sphere material="color:black" geometry="radius:500;phiLength:-180" rotation="90 0 0"></a-sphere>
-        <a-sphere material="color:blue" geometry="radius:500;phiLength:-180" rotation="-90 0 0"></a-sphere></a-entity>
+        <a-animation attribute="rotation" from="-180 0 0" to="0 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createNight" ></a-animation>
+        <a-animation attribute="rotation" from="0 0 0" to="-180 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createDay" ></a-animation>
+        <a-sphere material="color:black" geometry="radius:500;phiLength:-180" rotation="90 0 0">
+        <!--Add Stars as children--></a-sphere>
+        <a-sphere material="color:blue" geometry="radius:500;phiLength:-180" rotation="-90 0 0">
+        <!--Add Clouds as children--></a-sphere></a-entity>
       <!--Sunlight-->
       <a-entity id="sunlight" light="type:hemisphere;angle:0;decay:0.5;distance:100;intensity:0.1;penumbra:0.3">
         <a-animation attribute="light.intensity" from=".2" to="1" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createDay"></a-animation>
@@ -148,8 +150,10 @@
       var el = document.querySelector('#sunlight');
       var el2 = document.querySelector('#sundial');
       var el3 = document.querySelector('#earthglobe');
+      var el4 = document.querySelector('#skycenter');
       el.emit(daytime ? 'createDay' : 'createNight');
       el2.emit(daytime ? 'createDay' : 'createNight');
+      el4.emit(daytime ? 'createDay' : 'createNight');
       el3.setAttribute('material.src', '#earthnight-texture');
      }
     </script>
