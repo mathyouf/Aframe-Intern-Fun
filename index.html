@@ -32,7 +32,11 @@
           <a-entity class="cloud" scale="10 10 10" position="0 0 -200">
             <a-sphere material="" geometry="radius:5" scale="2 1 0.5"></a-sphere>
             <a-sphere position="3 3 0" material="" geometry="radius:5" scale="1.2 1 0.5"></a-sphere>
-            <a-sphere position="-2 -4 0" material="" geometry="radius:5" scale="1.2 1 0.5"></a-sphere></a-entity></a-sphere></a-sphere></a-entity>
+            <a-sphere position="-2 -4 0" material="" geometry="radius:5" scale="1.2 1 0.5"></a-sphere></a-entity>
+        <a-sphere material="color:white" geometry="radius:5" scale="2 1 0.5">
+          <a-entity rotation="getRandNum(0, 360) getRandNum(0, 360) getRandNum(0, 360)">
+            <a-sphere material="color:white" geometry="radius: getRandNum(1, 5)" scale="2 1 0.5" position="getRandNum(1, 5) 0 0"></a-sphere></a-entity></a-sphere></a-sphere></a-entity>
+    
       <!--Sunlight-->
       <a-entity id="sunlight" light="type:hemisphere;angle:0;decay:0.5;distance:100;intensity:0.3;penumbra:0.3">
         <a-animation attribute="light.intensity" from=".2" to="1" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createDay"></a-animation>
@@ -134,6 +138,10 @@
       el4.emit(daytime ? 'createDay' : 'createNight');
       el3.setAttribute('material.src', '#earthnight-texture');
      }
+      
+      function getRandNum(min, max) {
+        return Math.random()*max + min;
+      }
     </script>
     <script>
     AFRAME.registerPrimitive('a-sunflower', {
