@@ -21,7 +21,7 @@
       <a-sky color="blue"></a-sky>
       <!--Sunlight-->
       <a-entity light="type:hemisphere;angle:0;decay:0.5;distance:100;intensity:0.2;penumbra:0.3">
-        <a-animation attribute="light.intensity" to="1" dur="1300" easing="ease-in-out-quad" direction="normal"  animationend="daytime"></a-animation>
+        <a-animation attribute="light.intensity" to="1" dur="1300" easing="ease-in-out-quad" direction="normal" animationend="daytime"></a-animation>
         <a-animation attribute="light.intensity" to=".2" dur="1300" easing="ease-in-out-quad" direction="normal" begin="daytime" animationend="nighttime"></a-animation></a-entity>
       <!--Sun Button-->
       <a-entity>
@@ -88,7 +88,7 @@
     </script>
     <script>
      function changeDay(e){
-        e.emit('nighttime');
+        e.emit('nighttime', true);
        console.log('nighttime');
      }
     </script>
