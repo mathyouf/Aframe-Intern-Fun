@@ -9,6 +9,7 @@
     <a-scene>
       <!--Assets-->
       <a-assets>
+        <img id="sunflowercenter-texture" src="https://cdn.glitch.com/ce99bd4d-70da-49ed-a8fd-28e626624569%2Fdownload.jpg?1529471010380">
         <img id="moon-texture" src="https://cdn.glitch.com/ce99bd4d-70da-49ed-a8fd-28e626624569%2Fmoon_texture_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_1258985_o.png?1529467147757">
         <img id="sun-texture" src="https://cdn.glitch.com/ce99bd4d-70da-49ed-a8fd-28e626624569%2F8k_sun.jpg?1529467343517">
         <img id="grass-texture" src="https://cdn.glitch.com/ce99bd4d-70da-49ed-a8fd-28e626624569%2FGrass-2876.jpg?1529458758850">
@@ -31,13 +32,13 @@
       <a-entity>
         <a-cylinder material="" geometry="radius:0.15;height:1" position="0 .5 1.1">
           <a-entity id="earthglobe" roation="180 61 180" position="0 0.559 0" geometry="primitive:sphere;radius:0.2" material="src:#earthday-texture" onclick="changeDay();"></a-entity>
-          <a-entity id="sundial" position="0 0.559 0" rotation="-90 0 0">
+          <a-entity id="sundial" position="0 0.559 0" rotation="-90 180 0">
             <a-animation attribute="rotation" from="-90 0 0" to="-90 180 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createNight" ></a-animation>
             <a-animation attribute="rotation" from="-90 180 0" to="-90 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createDay" ></a-animation>
             <a-entity position="0 -0.415 0" geometry="primitive:sphere;radius:.05" material="src:#moon-texture;emissive:white;emissiveIntensity:.2" musicplayer></a-entity>
             <a-entity position="0 0.415 0" geometry="primitive:sphere;radius:.1" material="src:#sun-texture;emissive:white;emissiveIntensity:.4"></a-entity></a-entity></a-cylinder></a-entity>
       <!--Grass Ground-->
-      <a-plane geometry="height: 1000; width: 1000" material="src:#grass-texture;repeat:600 600" rotation="-90 0 0"></a-plane>
+      <a-plane geometry="height: 1000; width: 1000" material="src:#grass-texture;repeat:800 800" rotation="-90 0 0"></a-plane>
       <!--Door-->
       <a-entity>
           <a-box position="-1 1.5 -3" rotation="0 90 0" color="#b89e6d" geometry="height: 3; depth: 0.25; width: 0.25" shadow></a-box>
@@ -68,10 +69,10 @@
             <a-entity position="0 0.25 -1">
               <a-animation attibute="rotation" repeat="indefinite" to="-90 0 0" easing="ease-in-out-circ" direction="alternate-reverse" dur="1000"></a-animation>
               <a-box position="0 0.6 0.5" rotation="45 0 0" geometry="depth:0.1;height:2" color="yellow" ></a-box></a-entity></a-sphere></a-entity></a-entity>
-      <!--Flower-->
+      <!--Sunflower-->
       <a-entity position="3 0 3" rotation="0 33 0" id="flower">
-        <a-cylinder material="" geometry="radius:0.1;height:2" position="0 1 0"></a-cylinder>        
-        <a-sphere position="0 2 0" material="" geometry="radius:0.3"> 
+        <a-cylinder material="color:green" geometry="radius:0.1;height:2" position="0 1 0"></a-cylinder>        
+        <a-sphere position="0 2 0" material="src:#sunflowercenter-texture;repeat:2 2" geometry="radius:0.3"> 
           <a-animation attribute="rotation" to="0 0 360" easing="linear" dur="3000" repeat="indefinite"></a-animation>
           <a-sphere position="0.5 0 -0.4" rotation="0 35 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>
           <a-sphere position="0 0.5 -0.4" rotation="-35 0 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>
