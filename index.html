@@ -24,7 +24,7 @@
           <a-cursor position="0 0 -0.7" scale=".7 .7 .7"></a-cursor></a-camera>
       <!--Sky-->
       <a-entity id="skycenter" rotation="0 0 0">
-        <a-animation attribute="rotation" from="-180 0 0" to="0 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createNight" ></a-animation>
+        <a-animation attribute="rotation" from="-180 0 0" to="-360 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createNight" ></a-animation>
         <a-animation attribute="rotation" from="0 0 0" to="-180 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createDay" ></a-animation>
         <a-sphere material="color:black" geometry="radius:500;phiLength:-180" rotation="90 0 0">
         <!--Add Stars as children--></a-sphere>
@@ -41,7 +41,7 @@
             <a-animation attribute="rotation" to="0 -360 0" repeat="indefinite" easing="linear" dur="30000"></a-animation></a-entity>
           <a-entity id="sundial" position="0 0.559 0" rotation="-90 180 0">
             <a-animation attribute="rotation" from="-90 0 0" to="-90 180 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createNight" ></a-animation>
-            <a-animation attribute="rotation" from="-90 180 0" to="-90 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createDay" ></a-animation>
+            <a-animation attribute="rotation" from="-90 180 0" to="-90 360 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createDay" ></a-animation>
             <a-entity position="0 -0.315 0" geometry="primitive:sphere;radius:.05" material="src:#moon-texture;emissive:white;emissiveIntensity:.2" musicplayer></a-entity>
             <a-entity position="0 0.415 0" geometry="primitive:sphere;radius:.1" material="src:#sun-texture;emissive:white;emissiveIntensity:.4"></a-entity></a-entity></a-cylinder></a-entity>
       <!--Grass Ground-->
