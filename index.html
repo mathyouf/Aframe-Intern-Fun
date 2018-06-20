@@ -42,9 +42,9 @@
           <a-entity id="sundial" position="0 0.559 0" rotation="-90 180 0">
             <a-animation attribute="rotation" from="-90 0 0" to="-90 180 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createNight" ></a-animation>
             <a-animation attribute="rotation" from="-90 180 0" to="-90 360 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createDay" ></a-animation>
-            <a-entity position="0 -0.315 0" geometry="primitive:sphere;radius:.05" material="src:#moon-texture;emissive:white;emissiveIntensity:.2" musicplayer></a-entity>
-            <a-entity position="0 0.415 0" geometry="primitive:sphere;radius:.1" material="src:#sun-texture;emissive:white;emissiveIntensity:.4"></a-entity>
-          <a-entity position="0 -90 4" geometry="primitive:sphere" material="src:#sun-texture;emissive:white;emissiveIntensity:0.4" scale="4.7 4.7 4.7"></a-entity></a-entity></a-cylinder></a-entity>
+            <a-entity position="0 -0.315 0" scale=".25 .25 .25" geometry="primitive:sphere;radius:.2" material="src:#moon-texture;emissive:white;emissiveIntensity:.2" musicplayer></a-entity>
+            <a-entity position="0 0.415 0" scale=".5 .5 .5" geometry="primitive:sphere;radius:.2" material="src:#sun-texture;emissive:white;emissiveIntensity:.4"></a-entity>
+            <a-entity position="0 -18 21.062" geometry="primitive:sphere;radius:0.2" material="src:#sun-texture;emissive:white;emissiveIntensity:0.4" scale="107 107 107"></a-entity></a-entity></a-entity></a-cylinder></a-entity>
       <!--Grass Ground-->
       <a-plane geometry="height: 1000; width: 1000" material="src:#grass-texture;repeat:800 800" rotation="-90 0 0"></a-plane>
       <!--Door-->
