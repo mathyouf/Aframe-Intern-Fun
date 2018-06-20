@@ -28,7 +28,7 @@
         <a-animation attribute="rotation" from="0 0 0" to="-180 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createDay" ></a-animation>
         <a-sphere material="color:black" geometry="radius:500;phiLength:-180" rotation="90 0 0">
         <!--Add Stars as children--></a-sphere>
-        <a-sphere material="color:blue" geometry="radius:500;phiLength:-180" rotation="-90 0 0" clouds="number:50"></a-sphere></a-entity>
+        <a-sphere id="bluesky" material="color:blue" geometry="radius:500;phiLength:-180" rotation="-90 0 0" clouds="number:50"></a-sphere></a-entity>
     
       <!--Sunlight-->
       <a-entity id="sunlight" light="type:hemisphere;angle:0;decay:0.5;distance:100;intensity:1;penumbra:0.3">
@@ -133,7 +133,8 @@
      }
       
       function getRandNum(min, max) {
-        return Math.random()*max + min;
+        var num = Math.random()*max + min;
+        num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
       }
     </script>
     <script>
@@ -145,9 +146,7 @@
         cloudHeight: { default: 100 },
       },
       init: function () {
-        var skyRadius = this.el.getAttribute(geometry.radius)
-        var skyRadius = this.el.getAttribute(geometry.radius)
-        window.alert(skyRadius);
+        //var skyRadius = this.el.getAttribute(geometry.radius)
         var cloudNumber = this.data.number;
         var bubbleNumber = this.data.bubbles;
         var cloudheight = this.data.cloudHeight;
@@ -156,7 +155,7 @@
           base.setAttribute('material', 'color: white');
           base.setAttribute('radius', 1);  
           base.setAttribute('scale', getRandNum(1, 15) + ' ' + getRandNum(1, 15) + ' '+ getRandNum(1, 15));
-          base.setAttribute('position', getRandNum(cloudheight*-2, cloudheight*2) + ' ' + getRandNum(0, cloudheight) + ' '+ getRandNum(cloudheight*-2, cloudheight*2));
+          base.setAttribute('position', getRandNum(1, cloudheight*2) + ' ' + getRandNum(0, cloudheight) + ' '+ getRandNum(1, cloudheight*2));
           for (var j = 0; j < bubbleNumber; ++j) {
             origin = document.createElement('a-entity');
             origin.setAttribute('rotation', getRandNum(0, 360) + ' ' + getRandNum(0, 360) + ' ' + getRandNum(0, 360));
