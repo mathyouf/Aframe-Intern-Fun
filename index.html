@@ -29,7 +29,7 @@
         <a-sphere material="color:black" geometry="radius:500;phiLength:-180" rotation="90 0 0">
         <!--Add Stars as children--></a-sphere>
         <a-sphere material="color:blue" geometry="radius:500;phiLength:-180" rotation="-90 0 0">
-        <!--Add Clouds as children--></a-sphere></a-entity>
+        <a-sphere>material="color:white" geometry="radius:20;" position="5 5 5"</a-sphere></a-sphere></a-entity>
       <!--Sunlight-->
       <a-entity id="sunlight" light="type:hemisphere;angle:0;decay:0.5;distance:100;intensity:0.1;penumbra:0.3">
         <a-animation attribute="light.intensity" from=".2" to="1" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createDay"></a-animation>
@@ -117,32 +117,6 @@
           });
         }
       });
-      	AFRAME.registerShader('gradientshader', {
-	  schema: {
-	    topColor: {type: 'color', default: '1 0 0', is: 'uniform'},
-	    bottomColor: {type: 'color', default: '0 0 1', is: 'uniform'}
-	  },
-
-	  vertexShader: [
-	    'varying vec3 vWorldPosition;',
-	    'void main() {',
-	    ' vec4 worldPosition = modelMatrix * vec4( position, 1.0 );',
-	    ' vWorldPosition = worldPosition.xyz;',
-	    ' gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0 );',
-	    '}'
-	  ].join('\n'),
-
-	  fragmentShader: [
-	    'uniform vec3 bottomColor;',
-	    'uniform vec3 topColor;',
-	    'uniform float offset;',
-	    'varying vec3 vWorldPosition;',
-	    'void main() {',
-	    ' float h = normalize( vWorldPosition ).y;',
-	    ' gl_FragColor = vec4( mix( bottomColor, topColor, max( pow( max(h, 0.0 ), 0.8 ), 0.0 ) ), 1.0 );',
-	    '}'
-	  ].join('\n')
-	});
     </script>
     <script>
     var daytime = false;
