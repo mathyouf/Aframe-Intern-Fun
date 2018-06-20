@@ -4,90 +4,62 @@
     <title>Off-Day Work</title>
     <meta name="description" content="Hello, WebVR! - A-Frame">
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-      
-    
   </head>
   <body>
     <a-scene>
-      
-        <a-plane geometry="height: 1000; width: 1000" color="green" rotation="-90 0 0"></a-plane>
-        
-        <a-assets>
+      <!--Assets-->
+      <a-assets>
             <img id="grass-texture" src="https://cdn.glitch.com/ce99bd4d-70da-49ed-a8fd-28e626624569%2FGrass-2876.jpg?1529458758850">
             <img id="door-texture" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_texture.jpg?1529366905845">
             <img id="doorknob-texture" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoorknob_texture.jpg?1529366909977">
             <audio id="door-open" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_2.mp3?1529366898989"></audio></a-assets>
-        //Player
-        <a-camera>
-            <a-cursor></a-cursor></a-camera>
-        //Door
-        <a-entity>
-            <a-box position="-1 1.5 -3" rotation="0 90 0" color="#b89e6d" geometry="height: 3; depth: 0.25; width: 0.25" shadow></a-box>
-            <a-box position="1.5 1.5 -3" rotation="0 90 0" color="#b89e6d" geometry="height: 3; depth: .25; width: .25" shadow></a-box>
-            <a-box position="0.25 3.125 -3" rotation="90 0 90" color="#b89e6d" geometry="height: 2.75; depth: 0.25; width: 0.25" shadow></a-box>
-            <a-entity door position="-1 0 -3">
-              <a-animation begin="click" attribute="rotation" to="0 90 0" dur="1670" easing="ease-in-out-circ"></a-animation>
-              <a-box src="#door-texture" position="1.25 1.5 .25" geometry="height: 3; depth: 0.25; width: 2.25">
-                    <a-sphere src="#doorknob-texture" position=".736 0 .185" geometry="primitive: sphere; radius: 0.1"></a-sphere></a-box></a-entity></a-entity>
-        <a-entity rotation="0 90 -60" position="-5 6 0">
-          <a-animation attribute="rotation" repeat="indefinite" to="0 90 60" easing="ease-in-out-quad" direction="alternate-reverse" dur="1000"></a-animation>
-          <a-box color="#000000" position="0 -2.5 0" geometry="height: 5; depth: 0.1; width: 0.1">
-            <a-sphere src="assets/doorknob_texture.jpg" position="0 -3 0" radius=".5"></a-sphere></a-box></a-entity>
-        //Bird
-        <a-entity>
-          <a-entity position=".5 1.5 9">
-            <a-sphere position="-1.286 .5 0" radius=".5">
-              <a-cone rotation="0 0 90" position="-.931" color="yellow" geometry="primitive: cone; radiusBottom: 0.1"></a-cone>
-              <a-sphere geometry="primitive: sphere; radius: 0.1" position="-.3 .2 .3" color="black"></a-sphere>
-              <a-sphere geometry="primitive: sphere; radius: 0.1" position="-.3 .2 -.3" color="black"></a-sphere></a-sphere>
-            <a-sphere position="0 0 0" color="red" radius="1">
-              <a-entity position="0 .25 1">
-                <a-animation attibute="rotation" repeat="indefinite" to="-90 0 0" easing="ease-in-out-circ" direction="alternate-reverse" dur="1000"></a-animation>
-                <a-box position="0 0.6 0.5" rotation="45 0 0" geometry="depth:0.1;height:2" color="yellow" ></a-box></a-entity>
-              <a-entity position="0 0.25 -1">
-                          
-                            <a-box position="0 0.6 0.5" rotation="45 0 0" geometry="depth:0.1;height:2" color="yellow" ></a-box>
-                          <a-animation attibute="rotation" repeat="indefinite" to="-90 0 0" easing="ease-in-out-circ"
-                                         direction="alternate-reverse" dur="1000"></a-animation>
-                          
-                        </a-entity>
-
-                    </a-sphere>
-                    
-                    <a-animation attribute="position" from=".5 1.5 9" to="0 6 9" easing="linear" direction="alternate-reverse"
-                               repeat="indefinite" dur="5000"></a-animation>
-                    <a-animation attribute="rotation" to="360 0 0" repeat="indefinite" easing="ease-in-out-quad" dur="2000"></a-animation>
-
-                </a-entity>
-                
-                <a-animation attribute="rotation" to="0 -360 0" repeat="indefinite" easing="linear" dur="10000"></a-animation>
-              
-                
-        </a-entity>
-      
+      <!--Player-->
+      <a-camera>
+          <a-cursor></a-cursor></a-camera>
+      <!--Blue Sky-->
+      <a-sky color="blue"></a-sky>
+      <!--Grass Ground-->
+      <a-plane geometry="height: 1000; width: 1000" material="src:#grass-texture;repeat:600 600" rotation="-90 0 0"></a-plane>
+      <!--Door-->
+      <a-entity>
+          <a-box position="-1 1.5 -3" rotation="0 90 0" color="#b89e6d" geometry="height: 3; depth: 0.25; width: 0.25" shadow></a-box>
+          <a-box position="1.5 1.5 -3" rotation="0 90 0" color="#b89e6d" geometry="height: 3; depth: .25; width: .25" shadow></a-box>
+          <a-box position="0.25 3.125 -3" rotation="90 0 90" color="#b89e6d" geometry="height: 2.75; depth: 0.25; width: 0.25" shadow></a-box>
+          <a-entity door position="-1 0 -3">
+            <a-animation begin="click" attribute="rotation" to="0 90 0" dur="1670" easing="ease-in-out-circ"></a-animation>
+            <a-box src="#door-texture" position="1.25 1.5 .25" geometry="height: 3; depth: 0.25; width: 2.25">
+                  <a-sphere src="#doorknob-texture" position=".736 0 .185" geometry="primitive: sphere; radius: 0.1"></a-sphere></a-box></a-entity></a-entity>
+      <a-entity rotation="0 90 -60" position="-5 6 0">
+        <a-animation attribute="rotation" repeat="indefinite" to="0 90 60" easing="ease-in-out-quad" direction="alternate-reverse" dur="1000"></a-animation>
+        <a-box color="#000000" position="0 -2.5 0" geometry="height: 5; depth: 0.1; width: 0.1">
+          <a-sphere src="assets/doorknob_texture.jpg" position="0 -3 0" radius=".5"></a-sphere></a-box></a-entity>
+      <!--Bird-->
+      <a-entity>
+        <a-animation attribute="rotation" to="0 -360 0" repeat="indefinite" easing="linear" dur="10000"></a-animation>
+        <a-entity position=".5 1.5 9">
+          <a-animation attribute="position" from=".5 1.5 9" to="0 6 9" easing="linear" direction="alternate-reverse" repeat="indefinite" dur="5000"></a-animation>
+          <a-animation attribute="rotation" to="360 0 0" repeat="indefinite" easing="ease-in-out-quad" dur="2000"></a-animation>
+          <a-sphere position="-1.286 .5 0" radius=".5">
+            <a-cone rotation="0 0 90" position="-.931" color="yellow" geometry="primitive: cone; radiusBottom: 0.1"></a-cone>
+            <a-sphere geometry="primitive: sphere; radius: 0.1" position="-.3 .2 .3" color="black"></a-sphere>
+            <a-sphere geometry="primitive: sphere; radius: 0.1" position="-.3 .2 -.3" color="black"></a-sphere></a-sphere>
+          <a-sphere position="0 0 0" color="red" radius="1">
+            <a-entity position="0 .25 1">
+              <a-animation attibute="rotation" repeat="indefinite" to="-90 0 0" easing="ease-in-out-circ" direction="alternate-reverse" dur="1000"></a-animation>
+              <a-box position="0 0.6 0.5" rotation="45 0 0" geometry="depth:0.1;height:2" color="yellow" ></a-box></a-entity>
+            <a-entity position="0 0.25 -1">
+              <a-animation attibute="rotation" repeat="indefinite" to="-90 0 0" easing="ease-in-out-circ" direction="alternate-reverse" dur="1000"></a-animation>
+              <a-box position="0 0.6 0.5" rotation="45 0 0" geometry="depth:0.1;height:2" color="yellow" ></a-box></a-entity></a-sphere></a-entity></a-entity>
+      <!--Flower-->
       <a-entity position="3 0 3" rotation="0 33 0" id="flower">
-      
         <a-cylinder material="" geometry="radius:0.1;height:2" position="0 1 0"></a-cylinder>        
         <a-sphere position="0 2 0" material="" geometry="radius:0.3"> 
-          
           <a-animation attribute="rotation" to="0 0 360" easing="linear" dur="3000" repeat="indefinite"></a-animation>
           <a-sphere position="0.5 0 -0.4" rotation="0 35 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>
           <a-sphere position="0 0.5 -0.4" rotation="-35 0 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>
           <a-sphere position="-0.5 0 -0.4" rotation="0  -35 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>
-          <a-sphere position="0 -0.5 -0.4" rotation="35 0 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>
-        
-        </a-sphere>
-
-        
-        
-      </a-entity>
-                
-      
-        
-        
-        <a-sky color="blue"></a-sky>
+          <a-sphere position="0 -0.5 -0.4" rotation="35 0 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere></a-sphere></a-entity>
     </a-scene>
-    
     <script>
         AFRAME.registerComponent('door', {
             init:function() {
@@ -104,10 +76,6 @@
             });
             }
         });
-        
-        
-      
-      </script>
-      
+    </script>
   </body>
 </html>
