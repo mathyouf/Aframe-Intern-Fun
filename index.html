@@ -168,10 +168,19 @@
         number: { default: 3},
       }
       init: function () {
-        cloudcenter = document.createElement('a-entity');
-        cloudcenter.setAttribute('rotation', '0 0 0');
-        ground.classList.add('cloudcenter');
-       
+        this.base = document.createElement('a-sphere');
+        this.base.setAttribute('material', 'color: white');
+        this.base.setAttribute('radius', '1');  
+        for (var i = 0; i < 5; ++i) {
+          origin = document.createElement('a-entity');
+          origin.setAttribute('rotation', '' + getRandNum(0, 360) + ' ' + getRandNum(0, 360) + ' ' + getRandNum(0, 360));
+          var temp = document.createElement('a-sphere');
+          temp.setAttribute('radius', .5);
+          temp.setAttribute('material', 'color: white');
+          temp.setAttribute('position', getRandNum(0, 1) + ' 0 0');
+          origin.appendChild(temp);
+          this.base.appendChild(origin);
+        }     
       }
     });
     </script>
