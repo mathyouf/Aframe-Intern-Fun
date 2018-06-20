@@ -36,8 +36,9 @@
         <a-animation attribute="light.intensity" from="1" to=".2" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createNight"></a-animation></a-entity>
       <!--Sun Button-->
       <a-entity>
-        <a-cylinder material="" geometry="radius:0.15;height:1" position="0 .5 1.1">
-          <a-entity id="earthglobe" roation="180 61 180" position="0 0.559 0" geometry="primitive:sphere;radius:0.2" material="src:#earthday-texture" onclick="changeDay();"></a-entity>
+        <a-cylinder material="" geometry="radius:0.05;height:1" position="0 .5 1.1">
+          <a-entity id="earthglobe" roation="180 61 180" position="0 0.559 0" geometry="primitive:sphere;radius:0.2" material="src:#earthday-texture" onclick="changeDay();">
+            <a-animation attribute="rotation" to="0 -360 0" repeat="indefinite" easing="linear" dur="30000"></a-animation></a-entity>
           <a-entity id="sundial" position="0 0.559 0" rotation="-90 180 0">
             <a-animation attribute="rotation" from="-90 0 0" to="-90 180 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createNight" ></a-animation>
             <a-animation attribute="rotation" from="-90 180 0" to="-90 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createDay" ></a-animation>
