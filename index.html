@@ -21,7 +21,11 @@
       <a-sky color="blue"></a-sky>
       <!--Sunlight-->
       <a-entity light="type:hemisphere;angle:0;decay:0.5;distance:100;intensity:0.2;penumbra:0.3">
-        <a-animation attribute="light.intensity" to="1" dur="13000" easing="ease-in-out-quad" repeat="indefinite" direction="alternate-reverse"></a-animation></a-entity>
+        <a-animation attribute="light.intensity" to="1" dur="1300" easing="ease-in-out-quad" direction="normal" begin="nighttime" animationend="daytime"></a-animation></a-entity>
+        <a-animation attribute="light.intensity" to=".2" dur="1300" easing="ease-in-out-quad" direction="normal" begin="daytime" animationend="nighttime"></a-animation></a-entity>
+      <!--Sun Button-->
+      <a-entity>
+        <a-cylinder material="" geometry="radius:0.15;height:1" position="0 .5 1.1"></a-cylinder></a-entity>
       <!--Grass Ground-->
       <a-plane geometry="height: 1000; width: 1000" material="src:#grass-texture;repeat:600 600" rotation="-90 0 0"></a-plane>
       <!--Door-->
