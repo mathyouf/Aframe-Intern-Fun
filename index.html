@@ -16,7 +16,8 @@
         <img id="earthnight-texture" src="https://cdn.glitch.com/ce99bd4d-70da-49ed-a8fd-28e626624569%2Fimages%20(2).jpg?1529467520303">
         <img id="door-texture" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_texture.jpg?1529366905845">
         <img id="doorknob-texture" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoorknob_texture.jpg?1529366909977">
-        <audio id="door-open" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_2.mp3?1529366898989"></audio></a-assets>
+        <audio id="door-open" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_2.mp3?1529366898989"></audio>
+        <audio id="cpmusic" src="https://cdn.glitch.com/ce99bd4d-70da-49ed-a8fd-28e626624569%2Fcoldplay%20-%20death%20and%20all%20his%20friends.mp3?1529470292839"></audio></a-assets>
       <!--Player-->
       <a-camera>
           <a-cursor position="0 0 -0.7" scale=".7 .7 .7"></a-cursor></a-camera>
@@ -33,7 +34,7 @@
           <a-entity id="sundial" position="0 0.559 0" rotation="-90 0 0">
             <a-animation attribute="rotation" from="-90 0 0" to="-90 180 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createNight" ></a-animation>
             <a-animation attribute="rotation" from="-90 180 0" to="-90 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createDay" ></a-animation>
-            <a-entity position="0 -0.415 0" geometry="primitive:sphere;radius:.05" material="src:#moon-texture;emissive:white;emissiveIntensity:.2"></a-entity>
+            <a-entity position="0 -0.415 0" geometry="primitive:sphere;radius:.05" material="src:#moon-texture;emissive:white;emissiveIntensity:.2" musicplayer></a-entity>
             <a-entity position="0 0.415 0" geometry="primitive:sphere;radius:.1" material="src:#sun-texture;emissive:white;emissiveIntensity:.4"></a-entity></a-entity></a-cylinder></a-entity>
       <!--Grass Ground-->
       <a-plane geometry="height: 1000; width: 1000" material="src:#grass-texture;repeat:600 600" rotation="-90 0 0"></a-plane>
@@ -82,6 +83,21 @@
         init:function() {
           let playing = false;
           let audio = document.getElementById("door-open");
+          this.el.addEventListener('click', () => {
+              if(!playing) {
+                  audio.play();
+              } else {
+                  audio.pause();
+                  audio.currentTime = 0;
+              }
+              playing = !playing;
+          });
+        }
+      });
+      AFRAME.registerComponent('musicplayer', {
+        init:function() {
+          let playing = false;
+          let audio = document.getElementById("cpmusic");
           this.el.addEventListener('click', () => {
               if(!playing) {
                   audio.play();
