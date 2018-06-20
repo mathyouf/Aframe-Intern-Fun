@@ -148,15 +148,34 @@
 	    defaultComponents: {
 	      clouds: {
         },
+        geometry: {
+          primitive: 'sphere'
+        },
+        material: {
+          color: {default: 'white'}
+        },
       },
       mappings: {
           color: 'clouds.color',
+          number: 'clouds.number'
       }
   	});
       
     AFRAME.registerComponent('clouds', {
-        
-    });
+      schema: {
+        color: {type: 'color'},
+        number: { default: 3},
+      }
+      this.cloudcenter = document.createElement('a-entity');
+	    this.cloudcenter.setAttribute('rotation', '0 0 0');
+	    this.ground.classList.add('cloudcenter');
+    	this.el.appendChild(this);
+      for (var i = 0; i < this.number.; i++) {
+        this.clouds = document.createElement('a-entity');
+      	this.cloudcenter.setAttribute('rotation', '0 0 0');
+	      this.ground.classList.add('clouds');
+        this.el.appendChild(this.cloudcenter);
+      });
       
       
   
