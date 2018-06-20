@@ -22,8 +22,6 @@
       <!--Player-->
       <a-camera>
           <a-cursor position="0 0 -0.7" scale=".7 .7 .7"></a-cursor></a-camera>
-      <!-- Cloud Primitive -->
-      <a-entity clouds></a-entity>
       <!--Sky-->
       <a-entity id="skycenter" rotation="-180 0 0">
         <a-animation attribute="rotation" from="-180 0 0" to="-360 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createNight" ></a-animation>
@@ -31,10 +29,7 @@
         <a-sphere material="color:black" geometry="radius:500;phiLength:-180" rotation="90 0 0">
         <!--Add Stars as children--></a-sphere>
         <a-sphere material="color:blue" geometry="radius:500;phiLength:-180" rotation="-90 0 0">
-          <a-entity class="cloud" scale="10 10 10" position="0 0 -200">
-            <a-sphere material="" geometry="radius:5" scale="2 1 0.5"></a-sphere>
-            <a-sphere position="3 3 0" material="" geometry="radius:5" scale="1.2 1 0.5"></a-sphere>
-            <a-sphere position="-2 -4 0" material="" geometry="radius:5" scale="1.2 1 0.5"></a-sphere></a-entity></a-sphere></a-entity>
+          <a-entity clouds="num:3"></a-entity></a-sphere></a-entity>
     
       <!--Sunlight-->
       <a-entity id="sunlight" light="type:hemisphere;angle:0;decay:0.5;distance:100;intensity:1;penumbra:0.3">
@@ -146,22 +141,24 @@
     AFRAME.registerComponent('clouds', {
       schema: {
         color: {type: 'color'},
-        number: { default: 3},
+        number: { default: 3, min: 0},
       },
       init: function () {
+        var cloudnumber = this.data.number;
+        var bubblenumber
         var base = document.createElement('a-sphere');
         base.setAttribute('material', 'color: white');
-        base.setAttribute('radius', '1');  
-        
-        
+        base.setAttribute('radius', 1);  
+        base.setAttribute('scale', getRandNum(1, 15) + ' ' + getRandNum(1, 15) + ' '+ getRandNum(1, 15));
+      
         for (var i = 0; i < 5; ++i) {
           origin = document.createElement('a-entity');
-          origin.setAttribute('rotation', '' + getRandNum(0, 360) + ' ' + getRandNum(0, 360) + ' ' + getRandNum(0, 360));
+          origin.setAttribute('rotation', getRandNum(0, 360) + ' ' + getRandNum(0, 360) + ' ' + getRandNum(0, 360));
           var temp = document.createElement('a-sphere');
           var tempradius = getRandNum(.3, 1);
           temp.setAttribute('radius', tempradius);
           temp.setAttribute('material', 'color: white');
-          temp.setAttribute('position', getRandNum(1.2 - tempradius, 1) + ' 0 0');
+          temp.setAttribute('position', '' + getRandNum(1.2 - tempradius, 1) + ' 0 0');
           origin.appendChild(temp);
           base.appendChild(origin);
         }
