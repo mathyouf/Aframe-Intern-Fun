@@ -9,10 +9,11 @@
     <a-scene>
       <!--Assets-->
       <a-assets>
-            <img id="grass-texture" src="https://cdn.glitch.com/ce99bd4d-70da-49ed-a8fd-28e626624569%2FGrass-2876.jpg?1529458758850">
-            <img id="door-texture" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_texture.jpg?1529366905845">
-            <img id="doorknob-texture" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoorknob_texture.jpg?1529366909977">
-            <audio id="door-open" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_2.mp3?1529366898989"></audio></a-assets>
+        <img id="sky-texture" src="https://cdn.glitch.com/ce99bd4d-70da-49ed-a8fd-28e626624569%2FGrass-2876.jpg?1529458758850">
+        <img id="grass-texture" src="https://cdn.glitch.com/ce99bd4d-70da-49ed-a8fd-28e626624569%2FGrass-2876.jpg?1529458758850">
+        <img id="door-texture" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_texture.jpg?1529366905845">
+        <img id="doorknob-texture" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoorknob_texture.jpg?1529366909977">
+        <audio id="door-open" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_2.mp3?1529366898989"></audio></a-assets>
       <!--Player-->
       <a-camera>
           <a-cursor></a-cursor></a-camera>
@@ -61,21 +62,58 @@
           <a-sphere position="0 -0.5 -0.4" rotation="35 0 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere></a-sphere></a-entity>
     </a-scene>
     <script>
-        AFRAME.registerComponent('door', {
-            init:function() {
-            let playing = false;
-            let audio = document.getElementById("door-open");
-            this.el.addEventListener('click', () => {
-                if(!playing) {
-                    audio.play();
-                } else {
-                    audio.pause();
-                    audio.currentTime = 0;
-                }
-                playing = !playing;
-            });
-            }
-        });
+      AFRAME.registerComponent('door', {
+        init:function() {
+          let playing = false;
+          let audio = document.getElementById("door-open");
+          this.el.addEventListener('click', () => {
+              if(!playing) {
+                  audio.play();
+              } else {
+                  audio.pause();
+                  audio.currentTime = 0;
+              }
+              playing = !playing;
+          });
+        }
+      });
+    </script>
+    <script>
+      AFRAME.registerComponent('environment', {
+        schema: {
+          active: {default: false},
+          preset: {default: 'default', oneOf: ['none', 'default', 'contact', 'egypt', 'checkerboard', 'forest', 'goaland', 'yavapai', 'goldmine', 'arches', 'threetowers', 'poison', 'tron', 'japan', 'dream', 'volcano', 'starry', 'osiris']},
+          seed: {type: 'int', default: 1, min: 0, max: 1000},
+
+          skyType: {default: 'color', oneOf:['none', 'color', 'gradient', 'atmosphere']},
+          skyColor: {type: 'color'},
+          horizonColor: {type: 'color'},
+          lighting: {default: 'distant', oneOf: ['none', 'distant', 'point']},
+          shadow: {default: false},
+          shadowSize: { default: 10},
+          lightPosition: {type:'vec3', default: {x: 0, y: 1, z: -0.2}},
+          fog: {type:'float', default: 0, min: 0, max: 1},
+
+          flatShading: {default: false},
+          playArea: {type: 'float', default: 1, min: 0.5, max: 10},
+
+          ground: {default: 'hills', oneOf:['none', 'flat', 'hills', 'canyon', 'spikes', 'noise']},
+          groundYScale: {type: 'float', default: 3, min: 0, max: 50},
+          groundTexture: {default: 'none', oneOf:['none', 'checkerboard', 'squares', 'walkernoise']},
+          groundColor:  {type: 'color', default: '#553e35'},
+          groundColor2: {type: 'color', default: '#694439'},
+
+          dressing: {default: 'none', oneOf:['none', 'cubes', 'pyramids', 'cylinders', 'hexagons', 'stones', 'trees', 'mushrooms', 'towers', 'apparatus', 'arches', 'torii']},
+          dressingAmount: {type: 'int', default: 10, min: 0, max: 1000},
+          dressingColor:  {type: 'color', default: '#795449'},
+          dressingScale: {type: 'float', default: 5, min: 0, max: 100},
+          dressingVariance: {type: 'vec3', default: {x: 1, y: 1, z: 1}},
+          dressingUniformScale: {default: true},
+          dressingOnPlayArea: {type: 'float', default: 0, min: 0, max: 1},
+
+          grid: {default:'none', oneOf:['none', '1x1', '2x2', 'crosses', 'dots', 'xlines', 'ylines']},
+          gridColor: {type: 'color', default: '#ccc'}
+        },
     </script>
   </body>
 </html>
