@@ -153,6 +153,8 @@
         var cloudHeight = this.data.cloudHeight;
         var cloudMin = this.data.cloudMin;
         let skyRadius = document.getElementById('bluesky').getAttribute('geometry').radius;
+        var center = document.createElement('a-entity');
+        let thetaRange = Math.floor(Math.acos(c
         
         
         for (var i = 0; i < cloudNumber; ++i) { 
@@ -165,7 +167,7 @@
           base.setAttribute('material', 'color: white');
           base.setAttribute('radius', 1);  
           base.setAttribute('scale', getRandNum(3, 10) + ' ' + getRandNum(3, 10) + ' '+ getRandNum(5, 8));
-          base.setAttribute('position', x + ' ' + y + ' '+ -z);
+          base.setAttribute('position', x + ' ' + y + ' '+ 0);
           for (var j = 0; j < bubbleNumber; ++j) {
             origin = document.createElement('a-entity');
             origin.setAttribute('rotation', getRandNum(0, 360) + ' ' + getRandNum(0, 360) + ' ' + getRandNum(0, 360));
@@ -177,7 +179,8 @@
             origin.appendChild(temp);
             base.appendChild(origin);
           }  
-          this.el.appendChild(base);
+          center.appendChild(base);
+          this.el.appendChild(center);
         }
       }
     });
