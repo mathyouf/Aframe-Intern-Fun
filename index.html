@@ -150,15 +150,17 @@
         //var skyRadius = this.el.getAttribute(geometry.radius)
         var cloudNumber = this.data.number;
         var bubbleNumber = this.data.bubbles;
-        var cloudheight = this.data.cloudHeight;
-        var cloudmin = this.data.cloudMin;
-        var horizona
+        var cloudHeight = this.data.cloudHeight;
+        var cloudMin = this.data.cloudMin;
+        let skyRadius = document.getElementById('bluesky').getAttribute('geometry').radius;
+        let horizontalRange = Math.floor(Math.sqrt((skyRadius * skyRadius) - (cloudHeight * cloudHeight)));
+        
         for (var i = 0; i < cloudNumber; ++i) { 
           var base = document.createElement('a-sphere');
           base.setAttribute('material', 'color: white');
           base.setAttribute('radius', 1);  
           base.setAttribute('scale', getRandNum(3, 10) + ' ' + getRandNum(3, 10) + ' '+ getRandNum(5, 8));
-          base.setAttribute('position', getRandNum(1, cloudheight*2) + ' ' + getRandNum(1, cloudheight*2) + ' '+ getRandNum(-cloudmin, -cloudheight));
+          base.setAttribute('position', getRandNum(-horizontalRange, horizontalRange) + ' ' + getRandNum(cloudHeight, skyRadius) + ' '+ getRandNum(-horizontalRange, -horizontalRange));
           for (var j = 0; j < bubbleNumber; ++j) {
             origin = document.createElement('a-entity');
             origin.setAttribute('rotation', getRandNum(0, 360) + ' ' + getRandNum(0, 360) + ' ' + getRandNum(0, 360));
@@ -166,7 +168,7 @@
             var tempRadius = getRandNum(.3, 1);
             temp.setAttribute('radius', tempRadius);
             temp.setAttribute('material', 'color: white');
-            temp.setAttribute('position', '' + getRandNum(1.2 - tempradius, 1) + ' 0 0');
+            temp.setAttribute('position', '' + getRandNum(1.2 - tempRadius, 1) + ' 0 0');
             origin.appendChild(temp);
             base.appendChild(origin);
           }  
