@@ -153,14 +153,16 @@
         var cloudHeight = this.data.cloudHeight;
         var cloudMin = this.data.cloudMin;
         let skyRadius = document.getElementById('bluesky').getAttribute('geometry').radius;
-        let horizontalRange = Math.floor(Math.sqrt((skyRadius * skyRadius) - (cloudHeight * cloudHeight)));
+        let x = getRandNum(-skyRadius, skyRadius);
+        let y = Math.floor(Math.sqrt(x * x + skyRadius * skyRadius));
+        l
         
         for (var i = 0; i < cloudNumber; ++i) { 
           var base = document.createElement('a-sphere');
           base.setAttribute('material', 'color: white');
           base.setAttribute('radius', 1);  
           base.setAttribute('scale', getRandNum(3, 10) + ' ' + getRandNum(3, 10) + ' '+ getRandNum(5, 8));
-          base.setAttribute('position', getRandNum(-horizontalRange, horizontalRange) + ' ' + getRandNum(-horizontalRange, horizontalRange) + ' '+ (-getRandNum(cloudHeight, skyRadius)));
+          base.setAttribute('position', getRandNum(-xRange, xRange) + ' ' + getRandNum(-horizontalRange, horizontalRange) + ' '+ (-getRandNum(cloudHeight, skyRadius)));
           for (var j = 0; j < bubbleNumber; ++j) {
             origin = document.createElement('a-entity');
             origin.setAttribute('rotation', getRandNum(0, 360) + ' ' + getRandNum(0, 360) + ' ' + getRandNum(0, 360));
