@@ -4,6 +4,7 @@
     <title>Off-Day Work</title>
     <meta name="description" content="Hello, WebVR! - A-Frame">
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
   </head>
   <body>
     <a-scene>
@@ -20,8 +21,9 @@
         <audio id="door-open" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_2.mp3?1529366898989"></audio>
         <audio id="cpmusic" src="https://cdn.glitch.com/ce99bd4d-70da-49ed-a8fd-28e626624569%2Fcoldplay%20-%20death%20and%20all%20his%20friends.mp3?1529470292839"></audio></a-assets>
       <!--Player-->
-      <a-camera></a-camera>
-      <a-entity  daydream-controls="hand:right" gearvr-controls="hand:right" oculus-touch-controls="hand:right" vive-controls="hand:right" windows-motion-controls="" laser-controls="" look-controls=""></a-entity>
+      <a-entity id="cameraRig">
+        <a-camera></a-camera>
+        <a-entity  teleport-controls="cameraRig: #cameraRig" daydream-controls="hand:right" gearvr-controls="hand:right" oculus-touch-controls="hand:right" vive-controls="hand:right" windows-motion-controls="" laser-controls="" look-controls=""></a-entity></a-entity>
       <!--Sky-->
       <a-entity id="skycenter" rotation="0 0 0">
         <a-animation attribute="rotation" from="-180 0 0" to="-360 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createNight" ></a-animation>
