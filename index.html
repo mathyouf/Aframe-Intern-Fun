@@ -23,7 +23,7 @@
       <!--Player-->
       <a-entity id="cameraRig">
         <a-camera></a-camera>
-        <a-entity  teleport-controls="cameraRig: #cameraRig" daydream-controls="hand:right" gearvr-controls="hand:right" oculus-touch-controls="hand:right" vive-controls="hand:right" windows-motion-controls="" laser-controls="" look-controls=""></a-entity></a-entity>
+        <a-entity  teleport-controls="cameraRig: #cameraRig; curveShootingSpeed: 15" daydream-controls="hand:right" gearvr-controls="hand:right" oculus-touch-controls="hand:right" vive-controls="hand:right" windows-motion-controls="" laser-controls="" look-controls=""></a-entity></a-entity>
       <!--Sky-->
       <a-entity id="skycenter" rotation="0 0 0">
         <a-animation attribute="rotation" from="-180 0 0" to="-360 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createNight" ></a-animation>
