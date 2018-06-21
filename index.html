@@ -162,7 +162,7 @@
           let yRange = Math.floor(Math.sqrt(r * r - x * x));
           let y = getRandNum(-yRange, yRange);
           let d = getRandNum(cloudHeight, skyRadius);
-          let z = Math.floor(Math.sqrt(d * d - x * x - y * y));
+          let z = getRandNum(Math.floor(Math.sqrt(cloudHeight * cloudHeight - x * x - y * y)), Math.floor(Math.sqrt(skyRadius * skyRadius - x * x - y * y)));
           var base = document.createElement('a-sphere');
           base.setAttribute('material', 'color: white');
           base.setAttribute('radius', 1);  
