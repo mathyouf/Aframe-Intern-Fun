@@ -19,6 +19,7 @@
         <img id="door-texture" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_texture.jpg?1529366905845">
         <img id="doorknob-texture" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoorknob_texture.jpg?1529366909977">
         <audio id="door-open" src="https://cdn.glitch.com/f35eea30-1fea-4c37-a30c-c158e4f44963%2Fdoor_2.mp3?1529366898989"></audio>
+        <audio id="door-close" src="https://cdn.glitch.com/ce99bd4d-70da-49ed-a8fd-28e626624569%2Fclose_door_1.mp3?1529614507262"></audio>
         <audio id="cpmusic" src="https://cdn.glitch.com/ce99bd4d-70da-49ed-a8fd-28e626624569%2Fcoldplay%20-%20death%20and%20all%20his%20friends.mp3?1529470292839"></audio></a-assets>
       <!--Player-->
       <a-entity id="cameraRig">
@@ -98,12 +99,12 @@
         init:function() {
           let playing = false;
           let open = false;
-          var audio-open = document.getElementById("door-open");
-          var audio-close = document.getElementById("door-close");
-          audio.volume = .2;
+          var audioopen = document.getElementById("door-open");
+          var audioclose = document.getElementById("door-close");
           this.el.addEventListener('click', () => {
+              var audio = (open ? audio-open : audio-close)
               open = !open;
-            
+              audio.volume = .2;
               if(!playing) {
                   audio.play();
               } else {
@@ -120,6 +121,7 @@
           var audio = document.getElementById("cpmusic");
           
           this.el.addEventListener('click', () => {
+              
               if(!playing) {
                   audio.play();
               } else {
