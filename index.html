@@ -133,12 +133,8 @@
       el3.setAttribute('material.src', '#earthnight-texture');
      }
       
-      function getRandNum(min, max, neg) {
-        var num = Math.random()*max + min;
-        if (neg === true){
-        num *= Math.floor(Math.random()*2) == 1 ? 1 : -1;
-        } else {}
-          return num;
+      function getRandNum(min, max) {
+        return Math.random() * (max - min) + min;
       }
     </script>
     <script>
@@ -156,18 +152,19 @@
         var bubbleNumber = this.data.bubbles;
         var cloudheight = this.data.cloudHeight;
         var cloudmin = this.data.cloudMin;
+        var horizona
         for (var i = 0; i < cloudNumber; ++i) { 
           var base = document.createElement('a-sphere');
           base.setAttribute('material', 'color: white');
           base.setAttribute('radius', 1);  
           base.setAttribute('scale', getRandNum(3, 10) + ' ' + getRandNum(3, 10) + ' '+ getRandNum(5, 8));
-          base.setAttribute('position', getRandNum(1, cloudheight*2, true) + ' ' + getRandNum(1, cloudheight*2, true) + ' '+ getRandNum(-cloudmin, -cloudheight, false));
+          base.setAttribute('position', getRandNum(1, cloudheight*2) + ' ' + getRandNum(1, cloudheight*2) + ' '+ getRandNum(-cloudmin, -cloudheight));
           for (var j = 0; j < bubbleNumber; ++j) {
             origin = document.createElement('a-entity');
             origin.setAttribute('rotation', getRandNum(0, 360) + ' ' + getRandNum(0, 360) + ' ' + getRandNum(0, 360));
             var temp = document.createElement('a-sphere');
-            var tempradius = getRandNum(.3, 1);
-            temp.setAttribute('radius', tempradius);
+            var tempRadius = getRandNum(.3, 1);
+            temp.setAttribute('radius', tempRadius);
             temp.setAttribute('material', 'color: white');
             temp.setAttribute('position', '' + getRandNum(1.2 - tempradius, 1) + ' 0 0');
             origin.appendChild(temp);
