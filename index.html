@@ -52,14 +52,16 @@
       <a-plane geometry="height: 1000; width: 1000" material="src:#grass-texture;repeat:800 800" rotation="-90 0 0"></a-plane>
       <!--Door-->
       <a-entity>
-          <
+          <!-- Frame-->
           <a-box position="-1 1.5 -3" rotation="0 90 0" color="#b89e6d" geometry="height: 3; depth: 0.25; width: 0.25" shadow></a-box>
           <a-box position="1.5 1.5 -3" rotation="0 90 0" color="#b89e6d" geometry="height: 3; depth: .25; width: .25" shadow></a-box>
           <a-box position="0.25 3.125 -3" rotation="90 0 90" color="#b89e6d" geometry="height: 2.75; depth: 0.25; width: 0.25" shadow></a-box>
+          <!-- Box -->
           <a-entity door position="-1 0 -3">
-            <a-animation begin="click" attribute="rotation" to="0 90 0" dur="1670" easing="ease-in-out-circ"></a-animation>
+            <a-animation begin="click" attribute="rotation" to="0 90 0" direction="alternate-reverse" dur="1670" easing="ease-in-out-circ"></a-animation>
             <a-box src="#door-texture" position="1.25 1.5 .25" geometry="height: 3; depth: 0.25; width: 2.25">
                   <a-sphere src="#doorknob-texture" position=".736 0 .185" geometry="primitive: sphere; radius: 0.1"></a-sphere></a-box></a-entity></a-entity>
+      <!-- Pendulum -->
       <a-entity rotation="0 90 -60" position="-5 6 0">
         <a-animation attribute="rotation" repeat="indefinite" to="0 90 60" easing="ease-in-out-quad" direction="alternate-reverse" dur="1000"></a-animation>
         <a-box color="#000000" position="0 -2.5 0" geometry="height: 5; depth: 0.1; width: 0.1">
@@ -95,8 +97,13 @@
       AFRAME.registerComponent('door', {
         init:function() {
           let playing = false;
-          let audio = document.getElementById("door-open");
+          let open = false;
+          var audio-open = document.getElementById("door-open");
+          var audio-close = document.getElementById("door-close");
+          audio.volume = .2;
           this.el.addEventListener('click', () => {
+              open = !open;
+            
               if(!playing) {
                   audio.play();
               } else {
@@ -110,7 +117,8 @@
       AFRAME.registerComponent('musicplayer', {
         init:function() {
           let playing = false;
-          let audio = document.getElementById("cpmusic");
+          var audio = document.getElementById("cpmusic");
+          
           this.el.addEventListener('click', () => {
               if(!playing) {
                   audio.play();
