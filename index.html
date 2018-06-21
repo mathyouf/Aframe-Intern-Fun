@@ -28,7 +28,7 @@
         <a-animation attribute="rotation" from="0 0 0" to="-180 0 0" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createDay" ></a-animation>
         <a-sphere material="color:black" geometry="radius:500;phiLength:-180" rotation="90 0 0">
         <!--Add Stars as children--></a-sphere>
-        <a-sphere id="bluesky" material="color:blue" geometry="radius:500;phiLength:-180" rotation="-90 0 0" clouds="number:150"></a-sphere></a-entity>
+        <a-sphere id="bluesky" material="color:blue" geometry="radius:500;phiLength:-180" rotation="-90 0 0" clouds="number:30"></a-sphere></a-entity>
     
       <!--Sunlight-->
       <a-entity id="sunlight" light="type:hemisphere;angle:0;decay:0.5;distance:100;intensity:1;penumbra:0.3">
@@ -161,8 +161,6 @@
           let r = getRandNum(0, skyRadius);
           let yRange = Math.floor(Math.sqrt(r * r - x * x));
           let y = getRandNum(-yRange, yRange);
-          let d = getRandNum(cloudHeight, skyRadius);
-          let z = getRandNum(Math.floor(Math.sqrt(cloudHeight * cloudHeight - x * x - y * y)), Math.floor(Math.sqrt(skyRadius * skyRadius - x * x - y * y)));
           var base = document.createElement('a-sphere');
           base.setAttribute('material', 'color: white');
           base.setAttribute('radius', 1);  
