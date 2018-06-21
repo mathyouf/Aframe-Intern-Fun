@@ -152,10 +152,7 @@
         var bubbleNumber = this.data.bubbles;
         var cloudHeight = this.data.cloudHeight;
         var cloudMin = this.data.cloudMin;
-        let skyRadius = document.getElementById('bluesky').getAttribute('geometry').radius;
-        var center = document.createElement('a-entity');
-        let thetaRange = Math.floor(Math.acos(c
-        
+        let skyRadius = document.getElementById('bluesky').getAttribute('geometry').radius
         
         for (var i = 0; i < cloudNumber; ++i) { 
           
@@ -163,6 +160,8 @@
           let r = getRandNum(0, skyRadius);
           let yRange = Math.floor(Math.sqrt(r * r - x * x));
           let y = getRandNum(-yRange, yRange);
+          let d = getRandNum(cloudHeight, skyRadius);
+          let z = getRandNum(Math.floor(Math.sqrt(cloudHeight * cloudHeight - x * x - y * y)), Math.floor(Math.sqrt(skyRadius * skyRadius - x * x - y * y)));
           var base = document.createElement('a-sphere');
           base.setAttribute('material', 'color: white');
           base.setAttribute('radius', 1);  
@@ -178,9 +177,8 @@
             temp.setAttribute('position', '' + getRandNum(1.2 - tempRadius, 1) + ' 0 0');
             origin.appendChild(temp);
             base.appendChild(origin);
-          }  
-          center.appendChild(base);
-          this.el.appendChild(center);
+          }
+          this.el.appendChild(base);
         }
       }
     });
