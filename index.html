@@ -36,7 +36,7 @@
         <a-sphere id="bluesky" material="color:blue" geometry="radius:500;phiLength:-180" rotation="-90 0 0" clouds="number:40"></a-sphere></a-entity>
     
       <!--Sunlight-->
-      <a-entity id="sunlight" light="type:hemisphere;angle:0;decay:0.5;distance:100;intensity:1;penumbra:0.3">
+      <a-entity id="sunlight" light="type:hemisphere;angle:0;decay:0.5;distance:100;intensity:1;penumbra:0.3; castShadow: true">
         <a-animation attribute="light.intensity" from=".2" to="1" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createDay"></a-animation>
         <a-animation attribute="light.intensity" from="1" to=".2" dur="1300" easing="ease-in-out-quad" direction="forwards" begin="createNight"></a-animation></a-entity>
       <!--Sun Button-->
