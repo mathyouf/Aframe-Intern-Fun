@@ -5,6 +5,7 @@
     <meta name="description" content="Hello, WebVR! - A-Frame">
     <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    <script src="https://unpkg.com/aframe-html-shader@0.2.0/dist/aframe-html-shader.min.js"></script>
   </head>
   <body>
     <a-scene>
@@ -94,6 +95,7 @@
           <a-sphere position="-0.5 0 -0.4" rotation="0  -35 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere>
           <a-sphere position="0 -0.5 -0.4" rotation="35 0 0" material="color:yellow" geometry="radius:0.5" visible="" scale="1 1 0.1"></a-sphere></a-sphere></a-entity>
     </a-scene>
+
     <script>
       AFRAME.registerComponent('door', {
         init:function() {
